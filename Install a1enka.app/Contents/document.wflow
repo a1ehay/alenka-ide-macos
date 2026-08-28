@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AMApplicationBuild</key>
+	<string>521.3</string>
+	<key>AMApplicationVersion</key>
+	<string>2.10</string>
+	<key>AMDocumentVersion</key>
+	<string>2</string>
+	<key>actions</key>
+	<array>
+		<dict>
+			<key>action</key>
+			<dict>
+				<key>AMAccepts</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Optional</key>
+					<true/>
+					<key>Types</key>
+					<array>
+						<string>com.apple.applescript.object</string>
+					</array>
+				</dict>
+				<key>AMActionVersion</key>
+				<string>1.0.2</string>
+				<key>AMApplication</key>
+				<array>
+					<string>Automator</string>
+				</array>
+				<key>AMParameterProperties</key>
+				<dict>
+					<key>source</key>
+					<dict/>
+				</dict>
+				<key>AMProvides</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Types</key>
+					<array>
+						<string>com.apple.applescript.object</string>
+					</array>
+				</dict>
+				<key>ActionBundlePath</key>
+				<string>/System/Library/Automator/Run AppleScript.action</string>
+				<key>ActionName</key>
+				<string>Запустить AppleScript</string>
+				<key>ActionParameters</key>
+				<dict>
+					<key>source</key>
+					<string>try
+    -- 1. Показываем приветственное окно
+    set userChoice to button returned of (display dialog "Добро пожаловать в a1enka!
+
+Этот установщик автоматически:
+• Установит Node.js и Ollama
+• Скачает локальную нейросеть (~1 ГБ)
+• Создаст удобное приложение в строке меню
+
+Для установки потребуются права администратора (пароль).
+
+Продолжить?" buttons {"Отмена", "Установить"} default button "Установить" with icon 1)
+    
+    if userChoice is "Отмена" then
+        return
+    end if
+
+    -- 2. Находим папку, в которой лежит этот установщик
+    tell application "Finder"
+        set appPath to (path to me) as text
+        set folderPath to (container of (appPath as alias)) as text
+    end tell
+    
+    -- 3. Формируем путь к тихому скрипту установки
+    set shPath to POSIX path of folderPath &amp; "silent-install.sh"
+    
+    -- 4. Запускаем скрипт с правами администратора (тут macOS попросит пароль)
+    do shell script "chmod +x " &amp; quoted form of shPath &amp; " &amp;&amp; " &amp; quoted form of shPath with administrator privileges
+    
+on error errMsg
+    -- Если что-то пошло не так, показываем понятную ошибку
+    display dialog "Произошла ошибка при установке:
+
+" &amp; errMsg buttons {"OK"} default button 1 with icon stop
+end try</string>
+				</dict>
+				<key>BundleIdentifier</key>
+				<string>com.apple.Automator.RunScript</string>
+				<key>CFBundleVersion</key>
+				<string>1.0.2</string>
+				<key>CanShowSelectedItemsWhenRun</key>
+				<false/>
+				<key>CanShowWhenRun</key>
+				<true/>
+				<key>Category</key>
+				<array>
+					<string>AMCategoryUtilities</string>
+				</array>
+				<key>Class Name</key>
+				<string>RunScriptAction</string>
+				<key>InputUUID</key>
+				<string>11A26652-1D04-406A-98EA-23D3BC40D23B</string>
+				<key>Keywords</key>
+				<array>
+					<string>Запустить</string>
+				</array>
+				<key>OutputUUID</key>
+				<string>CC2C952D-6E20-453F-A5A0-659397B4FBA5</string>
+				<key>UUID</key>
+				<string>43C19E7D-A5DD-48C5-9E22-B526672FF7B0</string>
+				<key>UnlocalizedApplications</key>
+				<array>
+					<string>Automator</string>
+				</array>
+				<key>arguments</key>
+				<dict>
+					<key>0</key>
+					<dict>
+						<key>default value</key>
+						<string>on run {input, parameters}
+	
+	(* Your script goes here *)
+	
+	return input
+end run</string>
+						<key>name</key>
+						<string>source</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>0</string>
+					</dict>
+				</dict>
+				<key>conversionLabel</key>
+				<integer>0</integer>
+				<key>isViewVisible</key>
+				<integer>1</integer>
+				<key>location</key>
+				<string>309.000000:315.000000</string>
+				<key>nibPath</key>
+				<string>/System/Library/Automator/Run AppleScript.action/Contents/Resources/Base.lproj/main.nib</string>
+			</dict>
+			<key>isViewVisible</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>connectors</key>
+	<dict/>
+	<key>workflowMetaData</key>
+	<dict>
+		<key>workflowTypeIdentifier</key>
+		<string>com.apple.Automator.application</string>
+	</dict>
+</dict>
+</plist>
