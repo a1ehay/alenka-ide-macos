@@ -1,0 +1,30 @@
+{
+  "manifest_version": 2,
+  "name": "a1enka",
+  "version": "1.0",
+  "description": "Умный помощник для редактирования кода",
+  "permissions": [
+    "clipboardRead",
+    "clipboardWrite",
+    "storage"
+  ],
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_title": "a1enka",
+    "default_icon": {
+      "16": "icon16.png",
+      "32": "icon48.png"
+    }
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "a1enka@my-extension",
+      "strict_min_version": "109.0"
+    }
+  }
+}

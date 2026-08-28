@@ -1,0 +1,12 @@
+{
+  "name": "a1enka-server",
+  "version": "1.0.0",
+  "description": "a1enka - AI Code Assistant Server",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": ["ai", "code", "assistant"],
+  "author": "",
+  "license": "MIT"
+}
